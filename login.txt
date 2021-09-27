@@ -1,0 +1,127 @@
+package javaprojectt;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class loginsystem {
+
+	private JFrame frame;
+	private JTextField textField;
+	private JPasswordField passwordField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					loginsystem window = new loginsystem();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public loginsystem() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("USER LOGIN");
+		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 50));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
+		lblNewLabel.setBounds(45, 11, 379, 41);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Username");
+		lblNewLabel_1.setFont(new Font("SansSerif", Font.BOLD, 20));
+		lblNewLabel_1.setBounds(10, 84, 164, 27);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Password");
+		lblNewLabel_2.setFont(new Font("SansSerif", Font.BOLD, 20));
+		lblNewLabel_2.setBounds(10, 134, 144, 27);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		textField = new JTextField();
+		textField.setBounds(184, 91, 240, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(184, 134, 240, 20);
+		frame.getContentPane().add(passwordField);
+		
+		JButton btnNewButton = new JButton("LOGIN");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				String username=textField.getText();
+				String password=passwordField.getText();
+				
+				if(password.contains("lakshmi")&&username.contains("subasri"))
+				{
+					textField.setText(null);
+					passwordField.setText(null);
+					Displaypicture.main(null);
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null,"INVALID LOGIN","ERROR",JOptionPane.ERROR_MESSAGE);
+					textField.setText(null);
+					passwordField.setText(null);
+				}
+			}
+		});
+		btnNewButton.setFont(new Font("SansSerif", Font.BOLD, 20));
+		btnNewButton.setForeground(new Color(0, 0, 0));
+		btnNewButton.setBounds(0, 223, 110, 27);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("RESET");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText(null);
+				passwordField.setText(null);
+			}
+		});
+		btnNewButton_1.setFont(new Font("SansSerif", Font.BOLD, 20));
+		btnNewButton_1.setBounds(163, 229, 118, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("EXIT");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnNewButton_2.setFont(new Font("SansSerif", Font.BOLD, 20));
+		btnNewButton_2.setBounds(335, 229, 89, 23);
+		frame.getContentPane().add(btnNewButton_2);
+	}
+}
